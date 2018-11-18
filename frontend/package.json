@@ -1,23 +1,14 @@
 {
-  "name": "my-money",
+  "name": "my-money-frontend",
   "version": "1.0.0",
-  "description": "react-redux study",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "production": "webpack --progress -p"
   },
-  "keywords": [
-    "react",
-    "redux",
-    "promisse",
-    "thunk",
-    "axios",
-    "webpack",
-    "adminLTE"
-  ],
-  "author": "Renato Vicente",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "admin-lte": "2.3.6",
