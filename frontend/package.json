@@ -7,8 +7,15 @@
     "dev": "webpack-dev-server --progress --colors --inline --hot",
     "production": "webpack --progress -p"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "react",
+    "redux",
+    "redux-form",
+    "axios",
+    "adminLTE",
+    "jquery"
+  ],
+  "author": "Renato Vicente",
   "license": "ISC",
   "devDependencies": {
     "admin-lte": "2.3.6",
