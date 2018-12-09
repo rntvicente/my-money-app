@@ -15,10 +15,10 @@ class BillingCycle extends React.Component {
         <Content>
           <Tabs>
             <TabsHeader>
-              <TabHeader target='List' icon='bars' label='tabList'/>
-              <TabHeader target='Include' icon='plus' label='tabInclude'/>
-              <TabHeader target='Update' icon='pencil' label='tabUpdate'/>
-              <TabHeader target='Delete' icon='trash-o' label='tabDelete'/>
+              <TabHeader label='List' icon='bars' target='tabList'/>
+              <TabHeader label='Include' icon='plus' target='tabInclude'/>
+              <TabHeader label='Update' icon='pencil' target='tabUpdate'/>
+              <TabHeader label='Delete' icon='trash-o' target='tabDelete'/>
             </TabsHeader>
             <TabsContent>
 
