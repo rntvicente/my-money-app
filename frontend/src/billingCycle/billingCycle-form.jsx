@@ -1,7 +1,10 @@
 import React from 'react';
 import { reduxForm, Field } from 'redux-form';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 
 import labelAndInput from '../common/form/labelAndInput';
+import { init } from './billingCycle-actions';
 
 class BillingCycleForm extends React.Component {
   render() {
@@ -20,10 +23,16 @@ class BillingCycleForm extends React.Component {
 
         <div className='box-footer'>
           <button type='submit' className='btn btn-primary'>submit</button>
+          <button type='button' onClick={this.props.init} className='btn btn-default'>cancelar</button>
+
         </div>
       </form>
     );
   }
 }
 
-export default reduxForm({ form: 'billingcycleForm' })(BillingCycleForm);
+BillingCycleForm = reduxForm({ form: 'billingcycleForm', destroyOnUnmount: false })(BillingCycleForm);
+
+const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
+
+export default connect(null, mapDispatchToProps)(BillingCycleForm);
