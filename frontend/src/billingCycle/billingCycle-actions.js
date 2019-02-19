@@ -28,7 +28,6 @@ const submit = (values, method) => {
   axios[method](`${url}/${id}`, values)
     .then(response => {
       toastr.success('Success', 'Operation performed successfully.');
-
       dispatch(init());
     })
     .catch(error => {
