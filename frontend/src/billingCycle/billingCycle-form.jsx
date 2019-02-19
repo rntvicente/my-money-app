@@ -8,16 +8,16 @@ import { init } from './billingCycle-actions';
 
 class BillingCycleForm extends React.Component {
   render() {
-    const { handleSubmit } = this.props;
+    const { handleSubmit, readOnly } = this.props;
 
     return (
       <form role='form' onSubmit={handleSubmit}>
         <div className='box-body'>
-          <Field name='name' component={labelAndInput}
+          <Field name='name' component={labelAndInput} readOnly={readOnly}
             label='Name' cols='12 4' placeholder='John Smith' />
-          <Field name='month' component={labelAndInput}
+          <Field name='month' component={labelAndInput} readOnly={readOnly}
             label='Month' cols='12 4' placeholder='5' />
-          <Field name='year' component={labelAndInput}
+          <Field name='year' component={labelAndInput} readOnly={readOnly}  
             label='Year' cols='12 4' placeholder='2018' />
         </div>
 
@@ -31,7 +31,7 @@ class BillingCycleForm extends React.Component {
   }
 }
 
-BillingCycleForm = reduxForm({ form: 'billingcycleForm', destroyOnUnmount: false })(BillingCycleForm);
+BillingCycleForm = reduxForm({ form: 'billingCycleForm', destroyOnUnmount: false })(BillingCycleForm);
 
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
 

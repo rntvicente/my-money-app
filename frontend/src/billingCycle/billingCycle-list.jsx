@@ -13,16 +13,14 @@ class BillingCycleList extends React.Component {
   renderRows() {
     const list = this.props.list || [];
 
-
     return list.map(item => (
       <tr key={item._id}>
         <td>{item.name}</td>
         <td>{item.month}</td>
         <td>{item.year}</td>
         <td>
-          <Button classButton='warning' icon='pencil' handleClick={this.props.showTab('tabUpdate', item)} />
-          <Button classButton='danger' icon='trash-o' handleClick={this.props.showTab('tabDelete', item)} />
-
+          <Button classButton='warning' icon='pencil' handleClick={() => this.props.showTab('tabUpdate', item)} />
+          <Button classButton='danger' icon='trash-o' handleClick={() => this.props.showTab('tabDelete', item)} />
         </td>
       </tr>
     ));

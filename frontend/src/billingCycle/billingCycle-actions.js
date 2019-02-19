@@ -8,9 +8,11 @@ const INITIAL_VALUES = {};
 const url = 'http://localhost:3000/api/billingCycles';
 
 export function getList() {
+  const request = axios.get(url);
+
   return {
     type: 'BILLING_CYCLE_FETCHED',
-    payload: axios.get(url)
+    payload: request
   }
 }
 
@@ -20,6 +22,10 @@ export function create(values) {
 
 export function update(values) {
   return submit(values, 'put');
+}
+
+export function remove(value) {
+  return submit(values, 'delete');
 }
 
 const submit = (values, method) => {
@@ -41,16 +47,16 @@ export function showTab(tabId, billingCycles) {
   return [
     showTabs(tabId),
     selectTab(tabId),
-    initialize('billingcycleForm', billingCycles)
+    initialize('billingCycleForm', billingCycles)
   ];
 }
 
 export function init() {
   return [
-    resetForm('billingcycleForm'),
+    resetForm('billingCycleForm'),
     getList(),
     selectTab('tabList'),
     showTabs('tabList', 'tabCreate'),
-    initialize('billingcycleForm', INITIAL_VALUES)
+    initialize('billingCycleForm', INITIAL_VALUES)
   ];
 }
