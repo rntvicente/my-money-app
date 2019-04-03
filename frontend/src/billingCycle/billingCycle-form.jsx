@@ -22,7 +22,7 @@ class BillingCycleForm extends React.Component {
         </div>
 
         <div className='box-footer'>
-          <button type='submit' className='btn btn-primary'>submit</button>
+          <button type='submit' className={this.props.className}>{this.props.labelName}</button>
           <button type='button' onClick={this.props.init} className='btn btn-default'>cancelar</button>
         </div>
       </form>

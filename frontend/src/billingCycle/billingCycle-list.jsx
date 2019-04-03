@@ -26,7 +26,7 @@ class BillingCycleList extends React.Component {
         <td>{item.name}</td>
         <td>{item.month}</td>
         <td>{item.year}</td>
-        <td>
+        <td className='table-actions'>
           <Button classButton='warning' icon='pencil' handleClick={() => this.showUpdate(item)} />
           <Button classButton='danger' icon='trash-o' handleClick={() => this.showDelete(item)} />
         </td>
