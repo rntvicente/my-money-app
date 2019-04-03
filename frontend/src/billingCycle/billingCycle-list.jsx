@@ -10,17 +10,25 @@ class BillingCycleList extends React.Component {
     this.props.getList();
   }
 
+  showUpdate(item) {
+    this.props.showTab('tabUpdate', item);
+  }
+
+  showDelete(item) {
+    this.props.showTab('tabDelete', item);
+  }
+
   renderRows() {
     const list = this.props.list || [];
-
+    
     return list.map(item => (
       <tr key={item._id}>
         <td>{item.name}</td>
         <td>{item.month}</td>
         <td>{item.year}</td>
         <td>
-          <Button classButton='warning' icon='pencil' handleClick={() => this.props.showTab('tabUpdate', item)} />
-          <Button classButton='danger' icon='trash-o' handleClick={() => this.props.showTab('tabDelete', item)} />
+          <Button classButton='warning' icon='pencil' handleClick={() => this.showUpdate(item)} />
+          <Button classButton='danger' icon='trash-o' handleClick={() => this.showDelete(item)} />
         </td>
       </tr>
     ));
