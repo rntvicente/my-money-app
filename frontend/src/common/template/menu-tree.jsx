@@ -6,7 +6,7 @@ export default props => (
       <i className={`fa fa-${props.icon}`}></i> <span>{props.label}</span>
       <i className='fa fa-angle-left pull-right'></i>
     </a>
-    
+
     <ul className='treeview-menu'>
       {props.children}
     </ul>
