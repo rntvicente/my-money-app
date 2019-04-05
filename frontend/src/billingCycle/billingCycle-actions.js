@@ -4,7 +4,11 @@ import { initialize } from 'redux-form';
 
 import { showTabs, selectTab } from '../common/tab/tab-actions';
 
-const INITIAL_VALUES = {};
+const INITIAL_VALUES = { 
+  credits: [{}],
+  debts: [{}]
+};
+
 const url = 'http://localhost:3000/api/billingCycles/';
 
 export function getList() {
