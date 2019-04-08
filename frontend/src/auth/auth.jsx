@@ -1,12 +1,11 @@
 import React from 'react';
 import { bindActionCreators } from 'redux';
-import { Form, Field } from 'redux-form';
+import { reduxForm, Field } from 'redux-form';
 import { connect } from 'react-redux';
 
 import { login, singup } from './auth-actions';
 import Grid from '../common/layout/grid';
 import Row from '../common/layout/row';
-import If from '../common/operator/if';
 import Messages from '../common/msg/messages';
 import Input from '../common/form/inputAuth';
 
@@ -34,6 +33,7 @@ class Auth extends React.Component {
   render() {
     const { loginMode } = this.state;
     const { handleSubmit } = this.props;
+
     return (
       <div className='login-box'>
         <div className='login-logo'><b> My</b> Money</div>

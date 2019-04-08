@@ -15,8 +15,8 @@ const routes = (server) => {
   server.use('/oapi', openApi);
 
   openApi.post('/login', authService.login);
-  openApi.post('singup', authService.singup);
-  openApi.post('validateToken', authService.validateToken);
+  openApi.post('/singup', authService.singup);
+  openApi.post('/validateToken', authService.validateToken);
 };
 
 module.exports = routes;

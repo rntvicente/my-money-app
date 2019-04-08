@@ -28,6 +28,7 @@ export function logout() {
 }
 
 export function validateToken(token) {
+  console.log('TK - ', token);
   return dispatch => {
     if (token) {
       axios.post(`${consts.OAPI_URL}/validateToken`, { token })
