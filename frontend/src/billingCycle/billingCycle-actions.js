@@ -3,13 +3,14 @@ import { toastr } from 'react-redux-toastr';
 import { initialize } from 'redux-form';
 
 import { showTabs, selectTab } from '../common/tab/tab-actions';
+import consts from '../consts';
 
 const INITIAL_VALUES = { 
   credits: [{}],
   debts: [{}]
 };
 
-const url = 'http://localhost:3000/api/billingCycles/';
+const url = `${consts.API_URL}/billingCycles/`;
 
 export function getList() {
   const request = axios.get(url);
