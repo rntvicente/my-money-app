@@ -31,11 +31,13 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "bcrypt": "^3.0.5",
     "body-parser": "^1.18.3",
     "chalk": "^2.4.2",
     "debug": "^4.1.1",
     "express": "^4.14.0",
     "express-query-int": "^3.0.0",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.11",
     "mongoose": "^5.4.13",
     "mongoose-paginate": "^5.0.3",
