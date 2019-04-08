@@ -12,6 +12,7 @@ export function singup(value) {
 };
 
 function submit(values, url) {
+  console.log('VALUE', values);
   return dispatch => {
     axios.post(url, values)
       .then(res => {
@@ -28,7 +29,6 @@ export function logout() {
 }
 
 export function validateToken(token) {
-  console.log('TK - ', token);
   return dispatch => {
     if (token) {
       axios.post(`${consts.OAPI_URL}/validateToken`, { token })

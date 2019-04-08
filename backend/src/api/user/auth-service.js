@@ -60,14 +60,10 @@ const singup = (req, res, next) => {
   }
 
   const salt = bcrypt.genSaltSync();
-  const passwordHash = bcrypt.hashSync(password, salt);
+  const hash = bcrypt.hashSync(password, salt);
 
-  if (!bcrypt.compareSync(confirmPassword, passwordHash)) {
-    res.status(400).send({
-      errors: ['Passwords do not match']
-    });
-
-    return;
+  if (!bcrypt.compareSync(confirmPassword, hash)) {
+    return res.status(400).send({ errors: ['Passwords do not match'] });
   }
 
   User.findOne({ email }, (err, user) => {
@@ -76,7 +72,7 @@ const singup = (req, res, next) => {
     } else if (user) {
       return res.status(200).send({ errors: 'User exists.' });
     } else {
-      const newUser = new User({ name, email, password: passwordHash });
+      const newUser = new User({ name, email, password: hash });
 
       newUser.save(err => {
         if (err) {
