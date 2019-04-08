@@ -46,7 +46,7 @@ class Auth extends React.Component {
               placeholder='E-mail' icon='envelope' />
             <Field component={Input} type='password' name='password'
               placeholder='Password' icon='lock' />
-            <Field component={Input} type='password' name='confirm_password'
+            <Field component={Input} type='password' name='confirmPassword'
               placeholder='Confirm Password' icon='lock' hide={loginMode} />
             <Row>
               <Grid cols='4'>
