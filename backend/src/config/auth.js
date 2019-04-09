@@ -15,7 +15,7 @@ module.exports = (req, res, next) => {
     });
   }
 
-  jwt.verify(token, env.authSecret, () => {
+  jwt.verify(token, env.authSecret, (err) => {
     if (err) {
       return res.status(403).send({ errors: ['Failed to autheticate token.'] })
     }
