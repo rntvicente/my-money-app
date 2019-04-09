@@ -12,7 +12,6 @@ export function singup(value) {
 };
 
 function submit(values, url) {
-  console.log('VALUE', values);
   return dispatch => {
     axios.post(url, values)
       .then(res => {
