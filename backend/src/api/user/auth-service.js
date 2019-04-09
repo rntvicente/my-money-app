@@ -41,22 +41,23 @@ const login = (req, res) => {
 const validateToken = (req, res) => {
   const { token } = req.body;
 
-  jwt.verify(token, env.authSecret, (err, decoded) => {
-    res.status(200).send({ valid: !err });
-  });
+  jwt.verify(token, env.authSecret, err => res.status(200).send({ valid: !err }));
 };
 
 const singup = (req, res, next) => {
-  const { name, email, password, confirmPassword } = req.body;
+  const {
+    name,
+    email,
+    password,
+    confirmPassword
+  } = req.body;
 
   if (!email.match(emailRegex)) {
-    return res.status(400).send({
-      errors: ['E-mail invalid.']
-    });
-  } else if (!password.match(passwordRegex)) {
-    return res.status(400).send({
-      errors: ['Password must be uppercase, lowercase and special.']
-    });
+    return res.status(400).send({ errors: ['E-mail invalid.'] });
+  }
+
+  if (!password.match(passwordRegex)) {
+    return res.status(400).send({ errors: ['Password must be uppercase, lowercase and special.'] });
   }
 
   const salt = bcrypt.genSaltSync();
@@ -69,21 +70,31 @@ const singup = (req, res, next) => {
   User.findOne({ email }, (err, user) => {
     if (err) {
       return sendErrorFromDB(res, err);
-    } else if (user) {
-      return res.status(200).send({ errors: 'User exists.' });
-    } else {
-      const newUser = new User({ name, email, password: hash });
-
-      newUser.save(err => {
-        if (err) {
-          return sendErrorFromDB(res, err);
-        }
-
-        login(req, res, next);
-      });
     }
+
+    if (user) {
+      return res.status(409).send({ errors: ['User exists.'] });
+    }
+
+    const newUser = new User({ name, email, password: hash });
+
+    newUser.save((error) => {
+      if (error) {
+        return sendErrorFromDB(res, error);
+      }
+
+      if (user) {
+        return res.status(400).send({ errors: ['User exists.'] });
+      }
+
+      return login(req, res, next);
+    });
+
+    return null;
   });
-}
+
+  return null;
+};
 
 module.exports = {
   login,
