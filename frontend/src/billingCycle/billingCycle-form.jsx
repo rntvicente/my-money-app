@@ -15,8 +15,8 @@ class BillingCycleForm extends React.Component {
     const sum = (accumulator, currentValue) => accumulator + currentValue;
 
     return {
-      sumOfCredits: this.props.credits.map(item => +item.value || 0).reduce(sum),
-      sumOfDebts: this.props.debts.map(item => +item.value || 0).reduce(sum)
+      sumOfCredits: this.props.credits.length ? this.props.credits.map(item => +item.value || 0).reduce(sum) : [],
+      sumOfDebts: this.props.debts.length ? this.props.debts.map(item => +item.value || 0).reduce(sum) : []
     }
   }
 
