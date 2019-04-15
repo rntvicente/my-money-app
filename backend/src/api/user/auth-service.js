@@ -16,9 +16,9 @@ const sendErrorFromDB = (res, dbErros) => {
 };
 
 const login = (req, res) => {
-  const { email, password } = req.body;
+  const { email: filter, password } = req.body;
 
-  User.findOne({ email }, (err, user) => {
+  User.findOne({ filter }, (err, user) => {
     if (err) {
       sendErrorFromDB(res, err);
       return;
@@ -26,15 +26,16 @@ const login = (req, res) => {
 
     if (user && bcrypt.compareSync(password, user.password)) {
       const { name, email } = user;
+
       const token = jwt.sign({ ...user }, env.authSecret, {
-        expiresIn: "1 day"
+        expiresIn: '1 day'
       });
 
       res.status(200).json({ name, email, token });
       return;
     }
 
-    return res.status(400).send({ errors: ['User/Password invalid'] })
+    res.status(400).send({ errors: ['User/Password invalid'] });
   });
 };
 
@@ -57,7 +58,7 @@ const singup = (req, res, next) => {
   }
 
   if (!password.match(passwordRegex)) {
-    return res.status(400).send({ errors: ['Password must be uppercase, lowercase and special.'] });
+    return res.status(400).send({ errors: ['Minimum 8 characters: Letters, numbers, and/or symbols'] });
   }
 
   const salt = bcrypt.genSaltSync();

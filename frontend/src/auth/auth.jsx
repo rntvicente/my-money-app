@@ -59,7 +59,7 @@ class Auth extends React.Component {
           </form>
           <br />
           <a onClick={() => this.changeMode()}>
-            {loginMode ? 'Register Here' : 'Log In'}
+            {loginMode ? 'New to My Money? Sing Up' : 'Log In'}
           </a>
         </div>
         <Messages />
