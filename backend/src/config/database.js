@@ -6,7 +6,7 @@ const uri = 'mongodb://mymoney:myMoney1@ds159993.mlab.com:59993/my-money';
 
 const options = {
   connectTimeoutMS: 1000,
-  useNewUrlParser: true
+  useMongoClient: true
 };
 
 const database = mongoose.connect(uri, options, (err) => {
