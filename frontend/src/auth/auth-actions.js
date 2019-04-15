@@ -3,7 +3,7 @@ import { toastr } from 'react-redux-toastr';
 
 import consts from '../consts';
 
-export function login(values) {
+export function login(value) {
   return submit(value, `${consts.OAPI_URL}/login`)
 };
 

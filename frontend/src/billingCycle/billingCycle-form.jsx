@@ -53,7 +53,6 @@ const selector = formValueSelector(BILLING_CYCLE_FORM);
 const mapStateToProps = state => ({
   credits: selector(state, 'credits'),
   debts: selector(state, 'debts')
-
 });
 const mapDispatchToProps = dispatch => bindActionCreators({ init }, dispatch);
 
